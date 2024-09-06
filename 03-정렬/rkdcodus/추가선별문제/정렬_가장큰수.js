@@ -1,4 +1,5 @@
 // 프로그래머스 42746 레벨 2
+// 혼자 풀기 실패
 
 function solution(numbers) {
   numbers.sort((a, b) => {
