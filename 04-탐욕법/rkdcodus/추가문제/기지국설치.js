@@ -1,4 +1,4 @@
-// 프로그래머스 12979
+// 프로그래머스 12979 레벨 3
 
 // 방법1 실패: 시간초과 test 1,2,4
 function solution(n, stations, w) {
