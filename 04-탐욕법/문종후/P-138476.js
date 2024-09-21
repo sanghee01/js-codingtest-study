@@ -15,6 +15,12 @@ function solution(k, tangerine) {
   }
   answer.sort((a, b) => b[1] - a[1]);
   console.log(answer);
+  let count = 0;
+  while (true) {
+    if (k === count) {
+      return;
+    }
+  }
 
   return answer;
 }
