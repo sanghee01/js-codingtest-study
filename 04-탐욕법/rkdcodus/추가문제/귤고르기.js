@@ -5,6 +5,7 @@ function solution(k, tangerine) {
   // 중복 많은 것부터 k개 채우기
   let answer = 0;
   const map = new Map();
+
   tangerine.forEach((i) => {
     if (map.has(i)) map.set(i, map.get(i) + 1);
     else map.set(i, 1);
