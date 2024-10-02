@@ -1,3 +1,16 @@
+/**
+ * 1. 아이디어
+ * 백트래킹, 재귀함수 안에서, for 돌면서 숫자 선택(이때 방문여부 확인)
+ * 재귀함수에서 M개를 선택할 경우 print
+ *
+ * 2. 시간복잡도
+ * N! > 가능
+ *
+ * 3. 자료구조
+ * - 결과값 저장 int[]
+ * - 방문여부 체크 bool[]
+ */
+
 const [N, M] = require("fs")
   .readFileSync("../../input.txt")
   .toString()
@@ -5,31 +18,25 @@ const [N, M] = require("fs")
   .split(" ")
   .map(Number);
 
-function solution(N, M) {
-  const list = new Array(M).fill(0);
-  const isVisited = new Array(N).fill(false);
-  let answer = "";
+const result = [];
+const isVisited = new Array(N + 1).fill(false);
+let answer = "";
 
-  function dfs(depth) {
-    if (depth === M) {
-      const arr = [];
-      for (let i = 0; i < M; i++) {
-        arr.push(list[i]);
-      }
-      return (answer += `${arr.join(" ")}\n`);
-    }
-    for (let i = 1; i <= N; i++) {
-      if (!isVisited[i]) {
-        list[depth] = i;
-        isVisited[i] = true;
-        dfs(depth + 1);
-        isVisited[i] = false;
-      }
+function recur(depth) {
+  if (depth === M) {
+    answer += result.join(" ") + "\n";
+    return;
+  }
+  for (let i = 1; i <= N; i++) {
+    if (!isVisited[i]) {
+      isVisited[i] = true;
+      result.push(i);
+      recur(depth + 1);
+      isVisited[i] = false;
+      result.pop();
     }
   }
-
-  dfs(0);
-  return answer;
 }
 
-console.log(solution(N, M));
+recur(0);
+console.log(answer);
