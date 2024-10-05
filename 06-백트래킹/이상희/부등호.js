@@ -12,19 +12,16 @@ let maxNum = 0;
 let minNum = Number.MAX_SAFE_INTEGER;
 
 function recur(depth) {
-  let curNum = "";
   if (depth === k + 1) {
+    // 부등호 조건 체크
     for (let i = 0; i < k; i++) {
-      if (signs[i] === "<") {
-        if (numbers[i] >= numbers[i + 1]) return;
-        curNum += numbers[i];
-      } else if (signs[i] === ">") {
-        if (numbers[i] <= numbers[i + 1]) return;
-        curNum += numbers[i];
-      }
+      if (signs[i] === "<" && numbers[i] >= numbers[i + 1]) return;
+      if (signs[i] === ">" && numbers[i] <= numbers[i + 1]) return;
     }
-    curNum += numbers.at(-1); // 마지막 숫자의 경우
 
+    const curNum = numbers.join(""); // 배열을 문자열로 변환
+
+    // 가장 큰 수와 가장 작은 수 갱신
     if (Number(curNum) > Number(maxNum)) maxNum = curNum;
     if (Number(curNum) < Number(minNum)) minNum = curNum;
     return;
