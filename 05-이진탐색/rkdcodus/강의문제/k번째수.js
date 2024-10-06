@@ -10,7 +10,7 @@ const input = require("fs")
 let n = input[0]; // 배열의 크기(N)
 let k = input[1]; // 인덱스 K
 let start = 1; // 배열에 존재할 수 있는 가장 작은 값
-let end = 10 ** 10; // 배열에 존재할 수 있는 가장 큰 값
+let end = 9; // 배열에 존재할 수 있는 가장 큰 값
 let result = 0;
 while (start <= end) {
   // 이진 탐색 수행(반복적)
@@ -20,6 +20,7 @@ while (start <= end) {
     // 각 행마다 계산
     total += Math.min(parseInt(mid / i), n);
   }
+
   if (total >= k) {
     // mid보다 작거나 같은 데이터의 개수가 k 이상이라면
     result = mid; // result에 기록
