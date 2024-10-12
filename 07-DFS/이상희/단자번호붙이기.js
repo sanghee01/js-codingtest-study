@@ -26,6 +26,7 @@ const visited = Array.from({ length: N }, () => new Array(N).fill(false));
 const result = [];
 
 let area = 0;
+// 상하좌우
 const dy = [0, 1, 0, -1];
 const dx = [1, 0, -1, 0];
 
@@ -36,6 +37,7 @@ function dfs(y, x) {
   for (let i = 0; i < 4; i++) {
     const ny = y + dy[i]; // 현재 y 인덱스
     const nx = x + dx[i]; // 현재 x 인덱스
+
     // 방향 체크시 map의 영역에서 초과되지 않으면 실행
     if (ny >= 0 && ny < N && nx >= 0 && nx < N) {
       // 1이고 방문한 적 없으면 실행

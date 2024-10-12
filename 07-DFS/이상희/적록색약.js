@@ -10,18 +10,22 @@ let visited = Array.from({ length: N }, () => new Array(N).fill(false));
 let result = "";
 
 let count = 0;
+// 상하좌우
 const dy = [0, 1, 0, -1];
 const dx = [1, 0, -1, 0];
 
 function dfs(y, x, color) {
+  // 각 노드에서 상하좌우 4칸 탐색
   for (let i = 0; i < 4; i++) {
-    const ny = y + dy[i];
-    const nx = x + dx[i];
+    const ny = y + dy[i]; // 현재 y 인덱스
+    const nx = x + dx[i]; // 현재 x 인덱스
 
+    // 방향 체크시 map의 영역에서 초과되지 않으면 실행
     if (ny >= 0 && ny < N && nx >= 0 && nx < N) {
+      // 탐색하고자 하는 색깔이고, 방문한적 없으면 실행
       if (map[ny][nx] == color && visited[ny][nx] == false) {
         visited[ny][nx] = true;
-        dfs(ny, nx, color);
+        dfs(ny, nx, color); // 그 다음 재귀 탐색
       }
     }
   }
