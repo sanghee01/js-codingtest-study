@@ -18,6 +18,7 @@ for (let i = 2; i < input.length; i++) {
 
 const visited = new Array(n + 1).fill(false);
 let count = 0;
+
 const dfs = (v) => {
   visited[v] = true;
   count += 1;
