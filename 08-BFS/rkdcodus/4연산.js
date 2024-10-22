@@ -66,6 +66,7 @@ class Queue {
     return this.size === 0;
   }
 }
+
 let answer = "";
 const [s, t] = input;
 
